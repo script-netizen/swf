@@ -9,6 +9,44 @@
       overflow: hidden;
       width: 100vw;
       height: 100vh;
+      background: linear-gradient(to right, #000, #333); /* Add a cool background gradient */
+    }
+
+    #gameSelect {
+      background: rgba(0, 0, 0, 0.8); /* Semi-transparent dark select box */
+      color: #fff; /* White text */
+      border: none;
+      border-radius: 5px; /* Rounded corners */
+      padding: 5px 10px;
+      font-family: monospace; /* Monospace font for a retro look */
+      cursor: pointer; /* Change cursor to pointer on hover */
+    }
+
+    #gameSelect:hover {
+      background: rgba(0, 0, 0, 0.6); /* Darken on hover */
+    }
+
+    #loadButton {
+      background: #333; /* Dark button background */
+      color: #fff; /* White text */
+      border: none;
+      border-radius: 5px; /* Rounded corners */
+      padding: 10px 20px;
+      font-family: monospace; /* Monospace font for a retro look */
+      cursor: pointer; /* Change cursor to pointer on hover */
+      margin-top: 10px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto; /* Center the button horizontally */
+    }
+
+    #loadButton:hover {
+      background: #222; /* Darken button on hover */
+    }
+
+    #swfContainer {
+      width: 100%;
+      height: calc(100vh - 80px); /* Subtract button height for proper positioning */
     }
   </style>
 </head>
@@ -16,9 +54,9 @@
   <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
 
   <select id="gameSelect"></select>
-  <button onclick="loadSWF()">Load Game</button>
+  <button id="loadButton" onclick="loadSWF()">Load Game</button>
 
-  <div id="swfContainer" style="width: 100%; height: 100%;"></div>
+  <div id="swfContainer"></div>
 
   <script>
     const gameDataUrl = 'https://cdn.jsdelivr.net/gh/script-netizen/swf@main/games.json'; // Replace with your JSON file URL
