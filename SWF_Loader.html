@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Retro Playground</title>
+  <title>New Tab</title>
   <style>
     html, body {
       margin: 0;
@@ -9,35 +9,44 @@
       overflow: hidden;
       width: 100vw;
       height: 100vh;
-      background: linear-gradient(to right, #000, #333);
+      background: linear-gradient(to right, #000, #333); /* Add a cool background gradient */
     }
 
-    #gameSelect, #loadButton {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: rgba(0, 0, 0, 0.8);
-      color: #fff;
+    #gameSelect {
+      background: rgba(0, 0, 0, 0.8); /* Semi-transparent dark select box */
+      color: #fff; /* White text */
       border: none;
-      border-radius: 5px;
+      border-radius: 5px; /* Rounded corners */
       padding: 5px 10px;
-      font-family: monospace;
-      cursor: pointer;
+      font-family: monospace; /* Monospace font for a retro look */
+      cursor: pointer; /* Change cursor to pointer on hover */
     }
 
-    #gameSelect:hover, #loadButton:hover {
-      background: rgba(0, 0, 0, 0.6);
+    #gameSelect:hover {
+      background: rgba(0, 0, 0, 0.6); /* Darken on hover */
     }
 
     #loadButton {
+      background: #333; /* Dark button background */
+      color: #fff; /* White text */
+      border: none;
+      border-radius: 5px; /* Rounded corners */
+      padding: 10px 20px;
+      font-family: monospace; /* Monospace font for a retro look */
+      cursor: pointer; /* Change cursor to pointer on hover */
       margin-top: 10px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto; /* Center the button horizontally */
+    }
+
+    #loadButton:hover {
+      background: #222; /* Darken button on hover */
     }
 
     #swfContainer {
-      position: relative;
       width: 100%;
-      height: 100%;
+      height: calc(100vh - 80px); /* Subtract button height for proper positioning */
     }
   </style>
 </head>
@@ -80,14 +89,8 @@
       embed.setAttribute("height", "100%");
 
       const swfContainer = document.getElementById("swfContainer");
-      swfContainer.innerHTML = "";
+      swfContainer.innerHTML = ""; // Clear any previous content
       swfContainer.appendChild(embed);
-
-      // Move the select box and button upwards
-      const gameSelect = document.getElementById("gameSelect");
-      const loadButton = document.getElementById("loadButton");
-      gameSelect.style.top = "10px";
-      loadButton.style.top = "50px";
     }
 
     loadGames();
