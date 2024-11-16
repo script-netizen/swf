@@ -9,44 +9,35 @@
       overflow: hidden;
       width: 100vw;
       height: 100vh;
-      background: linear-gradient(to right, #000, #333); /* Add a cool background gradient */
+      background: linear-gradient(to right, #000, #333);
     }
 
-    #gameSelect {
-      background: rgba(0, 0, 0, 0.8); /* Semi-transparent dark select box */
-      color: #fff; /* White text */
+    #gameSelect, #loadButton {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
       border: none;
-      border-radius: 5px; /* Rounded corners */
+      border-radius: 5px;
       padding: 5px 10px;
-      font-family: monospace; /* Monospace font for a retro look */
-      cursor: pointer; /* Change cursor to pointer on hover */
+      font-family: monospace;
+      cursor: pointer;
     }
 
-    #gameSelect:hover {
-      background: rgba(0, 0, 0, 0.6); /* Darken on hover */
+    #gameSelect:hover, #loadButton:hover {
+      background: rgba(0, 0, 0, 0.6);
     }
 
     #loadButton {
-      background: #333; /* Dark button background */
-      color: #fff; /* White text */
-      border: none;
-      border-radius: 5px; /* Rounded corners */
-      padding: 10px 20px;
-      font-family: monospace; /* Monospace font for a retro look */
-      cursor: pointer; /* Change cursor to pointer on hover */
       margin-top: 10px;
-      display: block;
-      margin-left: auto;
-      margin-right: auto; /* Center the button horizontally */
-    }
-
-    #loadButton:hover {
-      background: #222; /* Darken button on hover */
     }
 
     #swfContainer {
+      position: relative;
       width: 100%;
-      height: calc(100vh - 80px); /* Subtract button height for proper positioning */
+      height: 100%;
     }
   </style>
 </head>
@@ -59,7 +50,7 @@
   <div id="swfContainer"></div>
 
   <script>
-    const gameDataUrl = 'https://cdn.jsdelivr.net/gh/script-netizen/swf@main/games.json'; // Replace with your JSON file URL
+    const gameDataUrl = 'https://cdn.jsdelivr.net/gh/script-netizen/swf@main/games.json';
 
     async function loadGames() {
       try {
@@ -89,8 +80,14 @@
       embed.setAttribute("height", "100%");
 
       const swfContainer = document.getElementById("swfContainer");
-      swfContainer.innerHTML = ""; // Clear any previous content
+      swfContainer.innerHTML = "";
       swfContainer.appendChild(embed);
+
+      // Move the select box and button upwards
+      const gameSelect = document.getElementById("gameSelect");
+      const loadButton = document.getElementById("loadButton");
+      gameSelect.style.top = "10px";
+      loadButton.style.top = "50px";
     }
 
     loadGames();
