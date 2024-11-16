@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>New Tab</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+
+  <select id="gameSelect"></select>
+  <button onclick="loadSWF()">Load Game</button>
+
+  <div id="swfContainer" style="width: 100%; height: 100%;"></div>
+
+  <script>
+    const gameDataUrl = 'https://cdn.jsdelivr.net/gh/script-netizen/swf@main/games.json'; // Replace with your JSON file URL
+
+    async function loadGames() {
+      try {
+        const response = await fetch(gameDataUrl);
+        const games = await response.json();
+
+        const gameSelect = document.getElementById('gameSelect');
+
+        games.forEach(game => {
+          const option = document.createElement('option');
+          option.value = game.filename;
+          option.textContent = game.name;
+          gameSelect.appendChild(option);
+        });
+      } catch (error) {
+        console.error('Error loading games:', error);
+      }
+    }
+
+    function loadSWF() {
+      const selectedGame = document.getElementById("gameSelect").value;
+      const url = `https://cdn.jsdelivr.net/gh/script-netizen/swf@main/${selectedGame}.swf`;
+
+      const embed = document.createElement("embed");
+      embed.setAttribute("src", url);
+      embed.setAttribute("width", "100%");
+      embed.setAttribute("height", "100%");
+
+      const swfContainer = document.getElementById("swfContainer");
+      swfContainer.innerHTML = ""; // Clear any previous content
+      swfContainer.appendChild(embed);
+    }
+
+    loadGames();
+  </script>
+</body>
+</html>
