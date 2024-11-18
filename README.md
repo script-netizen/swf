@@ -1,2 +1,2 @@
-# swf
-spam spam spam!
+# SWF Playground
+simple html code to play gamezzzz
