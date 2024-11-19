@@ -1,7 +1,8 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Retro Playground</title>
+  <title>New Tab</title>
   <style>
     html, body {
       margin: 0;
@@ -54,12 +55,12 @@
   <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
 
   <select id="gameSelect"></select>
-  <button id="loadButton" onclick="loadSWF()">Load Game</button>
+  <button id="loadButton" onclick="loadSWF()">Load File</button>
 
   <div id="swfContainer"></div>
 
   <script>
-    const gameDataUrl = 'https://raw.githack.com/script-netizen/swf/main/games.json'; // Replace with your JSON file URL
+    const gameDataUrl = 'https://raw.githack.com/script-netizen/swf/main/list.json'; // Replace with your JSON file URL
 
     async function loadGames() {
       try {
@@ -81,7 +82,7 @@
 
     function loadSWF() {
       const selectedGame = document.getElementById("gameSelect").value;
-      const url = `https://cdn.jsdelivr.net/gh/script-netizen/swf@main/${selectedGame}.swf`;
+      const url = `https://cdn.jsdelivr.net/gh/script-netizen/swf@main/${selectedGame}`;
 
       const embed = document.createElement("embed");
       embed.setAttribute("src", url);
